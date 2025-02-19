@@ -15,6 +15,7 @@ The Lazy Loan Calculator is a Spring Boot application designed to calculate loan
 - **Spring Web**: For building web applications and RESTful services.
 
 
+
 ## Getting Started
 
 ### Prerequisites
@@ -45,9 +46,10 @@ The Lazy Loan Calculator is a Spring Boot application designed to calculate loan
   - **Response Body**: `LoanResponse` (JSON)
 
 ## Example Request
-curl -X POST http://localhost:8080/api/loan/calculate \ -H "Content-Type: application/json" \ -d '{ "amount": 10000, "term": 12, "interestRate": 5.0 }'
+curl -X POST http://localhost:8080/api/loan/calculate \ -H "Content-Type: application/json" \ -d '{ "principal": 10000, "annualInterestRate": 5.0, "years": 1, "monthlyPayment": 856.07 }'
 
 
 
 ## Example Response
-{ "monthlyPayment": 856.07, "totalPayment": 10272.84, "totalInterest": 272.84 }
+{ "monthlyPayment": 856.07, "totalInterest": 272.84, "amortizationSchedule": [ { "month": 1, "principalPayment": 814.07, "interestPayment": 42.00, "remainingBalance": 9185.93 }, … ] }
+
