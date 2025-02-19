@@ -51,8 +51,3 @@ curl -X POST http://localhost:8080/api/loan/calculate \ -H "Content-Type: applic
 
 ## Example Response
 { "monthlyPayment": 856.07, "totalPayment": 10272.84, "totalInterest": 272.84 }
-
-
-
-## License
-This project is licensed under the MIT License - see the `LICENSE` file for details.
