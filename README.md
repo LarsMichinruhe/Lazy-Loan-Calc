@@ -14,10 +14,6 @@ The Lazy Loan Calculator is a Spring Boot application designed to calculate loan
 - **Gradle**: Build automation tool.
 - **Spring Web**: For building web applications and RESTful services.
 
-## Project Structure
-src/ ├── main/ │ ├── java/ │ │ └── de/ │ │ └── bmscs/ │ │ └── bwslearning/ │ │ ├── controller/ │ │ │ └── LoanController.java │ │ ├── dto/ │ │ │ ├── LoanRequest.java │ │ │ └── LoanResponse.java │ │ └── service/ │ │ └── LoanService.java │ └── resources/ │ └── application.properties └── test/ └── java/
-
-
 
 ## Getting Started
 
