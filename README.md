@@ -1,5 +1,8 @@
 # Lazy Loan Calculator
 
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+
 ## Overview
 The Lazy Loan Calculator is a Spring Boot application designed to calculate loan details based on user input. It provides a RESTful API that accepts loan requests and returns calculated loan responses.
 
