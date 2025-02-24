@@ -29,7 +29,7 @@ The Lazy Loan Calculator is a Spring Boot application designed to calculate loan
 ### Installation
 1. **Clone the repository:**
    ```sh
-   git clone https://github.com/your-username/your-repository.git
+   git clone https://github.com/LarsMichinruhe/Lazy-Loan-Calc.git
    cd your-repository
    ```
 
