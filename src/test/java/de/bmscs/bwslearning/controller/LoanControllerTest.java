@@ -1,6 +1,5 @@
 package de.bmscs.bwslearning.controller;
 
-import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -60,7 +59,7 @@ public class LoanControllerTest {
         validRequest.setPrincipal(10000);
         validRequest.setAnnualInterestRate(5);
         validRequest.setYears(10);
-        validRequest.setMonthlyPayment(200);
+        validRequest.setAnnualInterestRate(2);
 
         LoanResponse loanResponse = new LoanResponse();
         loanResponse.setMonthlyPayment(200);
@@ -78,7 +77,7 @@ public class LoanControllerTest {
         invalidRequest.setPrincipal(0);
         invalidRequest.setAnnualInterestRate(5);
         invalidRequest.setYears(10);
-        invalidRequest.setMonthlyPayment(200);
+        invalidRequest.setAnnualRepaymentRate(2);
 
         ErrorResponse errorResponse = new ErrorResponse("Invalid input: All fields must be greater than 0.");
 
@@ -95,7 +94,7 @@ public class LoanControllerTest {
         anotherInvalidRequest.setPrincipal(10000);
         anotherInvalidRequest.setAnnualInterestRate(0);
         anotherInvalidRequest.setYears(10);
-        anotherInvalidRequest.setMonthlyPayment(200);
+        anotherInvalidRequest.setAnnualRepaymentRate(2);
 
         ErrorResponse errorResponse = new ErrorResponse("Invalid input: All fields must be greater than 0.");
 
