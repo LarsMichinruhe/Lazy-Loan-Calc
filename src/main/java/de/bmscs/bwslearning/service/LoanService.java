@@ -9,14 +9,20 @@ import de.bmscs.bwslearning.dto.AmortizationSchedule;
 import de.bmscs.bwslearning.dto.LoanRequest;
 import de.bmscs.bwslearning.dto.LoanResponse;
 
+/*
+ * Loan Service calculates the monthly payment, total interest and amortization schedule for a loan.
+ */
 @Service
 public class LoanService {
 
-    public LoanResponse calculateLoan(LoanRequest request) {
+	public LoanResponse calculateLoan(LoanRequest request) {
         double monthlyInterestRate = request.getAnnualInterestRate() / 12 / 100;
         int numberOfPayments = request.getYears() * 12;
-        double monthlyPayment = request.getMonthlyPayment();
         double principal = request.getPrincipal();
+        double annualRepaymentRate = request.getAnnualRepaymentRate() / 100;
+
+        // Correct monthly payment calculation using annuity formula
+        double monthlyPayment = (principal * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
 
         List<AmortizationSchedule> schedule = new ArrayList<>();
         double totalInterest = 0;
