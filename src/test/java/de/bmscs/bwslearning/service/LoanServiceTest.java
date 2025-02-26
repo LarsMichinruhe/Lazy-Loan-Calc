@@ -20,7 +20,7 @@ public class LoanServiceTest {
         validRequest.setPrincipal(10000);
         validRequest.setAnnualInterestRate(5);
         validRequest.setYears(10);
-        validRequest.setMonthlyPayment(200);
+        validRequest.setAnnualInterestRate(2);
 
         LoanResponse response = loanService.calculateLoan(validRequest);
 
