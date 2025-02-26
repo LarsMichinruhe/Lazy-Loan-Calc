@@ -59,7 +59,7 @@ public class LoanController {
     }
     
 	private boolean inputValid(LoanRequest request) {
-		return request.getPrincipal() > 0 && request.getAnnualInterestRate() > 0 && request.getYears() > 0 && request.getMonthlyPayment() > 0;
+		return request.getPrincipal() > 0 && request.getAnnualInterestRate() > 0 && request.getYears() > 0 && request.getAnnualInterestRate() > 0;
     }
 	
 	private String toJson(Object obj) {
