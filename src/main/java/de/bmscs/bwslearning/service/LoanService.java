@@ -1,3 +1,4 @@
+
 package de.bmscs.bwslearning.service;
 
 import java.util.ArrayList;
@@ -15,14 +16,21 @@ import de.bmscs.bwslearning.dto.LoanResponse;
 @Service
 public class LoanService {
 
-	public LoanResponse calculateLoan(LoanRequest request) {
+    public LoanResponse calculateLoan(LoanRequest request) {
         double monthlyInterestRate = request.getAnnualInterestRate() / 12 / 100;
         int numberOfPayments = request.getYears() * 12;
         double principal = request.getPrincipal();
         double annualRepaymentRate = request.getAnnualRepaymentRate() / 100;
 
-        // Correct monthly payment calculation using annuity formula
-        double monthlyPayment = (principal * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+        // Calculate annual repayment amount
+        double annualRepaymentAmount = principal * annualRepaymentRate;
+        // Calculate monthly repayment amount
+        double monthlyRepaymentAmount = annualRepaymentAmount / 12;
+
+        // Calculate monthly interest payment
+        double monthlyInterestPayment = principal * monthlyInterestRate;
+        // Calculate total monthly payment
+        double monthlyPayment = monthlyRepaymentAmount + monthlyInterestPayment;
 
         List<AmortizationSchedule> schedule = new ArrayList<>();
         double totalInterest = 0;
@@ -30,6 +38,12 @@ public class LoanService {
         for (int month = 1; month <= numberOfPayments; month++) {
             double interestPayment = principal * monthlyInterestRate;
             double principalPayment = monthlyPayment - interestPayment;
+
+            // Adjust the last payment if the remaining balance goes below zero
+            if (principal - principalPayment < 0) {
+                principalPayment = principal;                
+            }
+
             principal -= principalPayment;
             totalInterest += interestPayment;
 
@@ -39,6 +53,11 @@ public class LoanService {
             entry.setInterestPayment(interestPayment);
             entry.setRemainingBalance(principal);
             schedule.add(entry);
+
+            // Stop calculation if remaining balance is zero
+            if (principal <= 0) {
+                break;
+            }
         }
 
         LoanResponse response = new LoanResponse();
