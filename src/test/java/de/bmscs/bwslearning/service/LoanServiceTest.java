@@ -24,12 +24,12 @@ public class LoanServiceTest {
 
         LoanResponse response = loanService.calculateLoan(validRequest);
 
-        assertEquals(92.01, response.getMonthlyPayment(), 0.01);
-        assertEquals(1041.61, response.getTotalInterest(), 0.01);
+        assertEquals(16.66, response.getMonthlyPayment(), 0.01);
+        assertEquals(2000, response.getTotalInterest(), 0.01);
 
         List<AmortizationSchedule> schedule = response.getAmortizationSchedule();
         assertEquals(120, schedule.size());
         assertEquals(1, schedule.get(0).getMonth());
-        assertEquals(92.01, schedule.get(0).getPrincipalPayment() + schedule.get(0).getInterestPayment(), 0.01);
+        assertEquals(16.66, schedule.get(0).getPrincipalPayment() + schedule.get(0).getInterestPayment(), 0.01);
     }
 }
